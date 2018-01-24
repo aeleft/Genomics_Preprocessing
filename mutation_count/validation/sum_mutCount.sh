@@ -5,6 +5,7 @@
 #   number of variants for the entire file
 #
 # Input   $1 - .csv variant file with integer mutations
+#	  $2 - the phenotype column to start counting from
 # Output: Printed each gene and the mutation sum for it
 #
 # Notes on assumptions:
@@ -17,13 +18,17 @@
 #Variable for the input variant file
 VAR_FILE=$1
 
+#The column to start counting for individual phenotyes
+START_PHENO_COL=$2
+
+
 #Create a temporary file to store the genes and the mutation count per row
 temp_file=`mktemp`
 
 #Use awk to count the mutations
-awk -F, '
+awk -F, -v st_pheno_col="$START_PHENO_COL" '
     # for every row, calculate the sum
-    {sum = 0; for (i=184; i<=NF; i+=6) sum += $i}
+    {sum = 0; for (i=st_pheno_col; i<=NF; i+=6) sum += $i}
 
     # print out the mutation sum with the gene and annotation
     {print $10","$11","sum}
