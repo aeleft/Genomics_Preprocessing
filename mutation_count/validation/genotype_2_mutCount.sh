@@ -8,6 +8,9 @@
 #         $2 - path to the output file in the same format
 #
 # Output: .output file with the string sequences replaced
+#
+# Note that the `sed` function assumes GNU sed (i.e. Linux server). It will
+# not work if run using OS/X
 # ============================================================================
 
 #Set up path variables
@@ -23,16 +26,16 @@ cp $VAR_FILE $OUTPUT_PATH
 #Note, the "Filtered [genotype]" conversion needs to be done first
 
 #Filtering the heterozygote
-sed -i '' 's/Filtered Heterozygote/1/g' $OUTPUT_PATH
-sed -i '' 's/Heterozygote/1/g' $OUTPUT_PATH
+sed -i 's/Filtered Heterozygote/1/g' $OUTPUT_PATH
+sed -i 's/Heterozygote/1/g' $OUTPUT_PATH
 
 #Filtering the Homozygote
-sed -i '' 's/Filtered Homozygote/2/g' $OUTPUT_PATH
-sed -i '' 's/Homozygote/2/g' $OUTPUT_PATH
+sed -i 's/Filtered Homozygote/2/g' $OUTPUT_PATH
+sed -i 's/Homozygote/2/g' $OUTPUT_PATH
 
 #Filtering the trizygote
-sed -i '' 's/Filtered Trizygote/3/g' $OUTPUT_PATH
-sed -i '' 's/Trizygote/3/g' $OUTPUT_PATH
+sed -i 's/Filtered Trizygote/3/g' $OUTPUT_PATH
+sed -i 's/Trizygote/3/g' $OUTPUT_PATH
 
 
 echo "Done!"
