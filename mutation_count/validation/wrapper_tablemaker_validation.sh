@@ -12,6 +12,17 @@ VAR_FILE="?"
 TABL_FILE="?"
 SUMMARY_FILE="?"
 
+#Variant file counting: defining the starting col for individual phenotype
+START_PHENO_COL=184
+#dbGaP_casecontrol:184; dbGaP_trios:84; NDAR:87 ; CONFIRM ON FILE EACH TIME
+
+
+#Actual table counting: defining starting col and row
+TABL_START_ROW=2
+TABL_START_COL=3
+#for dbGaP_casecontrol: row=2, col=3
+#for dbGaP_trios: row=2, col=6
+#for NDAR: row=2, col=6
 
 
 ##### BASH GENERATION PIPELINE #####
@@ -30,7 +41,7 @@ rm $funcGene_temp
 #Count the number of mutations for each gene 
 echo "Counting mutation sum from variant file (`date`)"
 shGen_mutCount=`mktemp`
-bash sum_mutCount.sh $intMut_temp > $shGen_mutCount
+bash sum_mutCount.sh $intMut_temp $START_PHENO_COL > $shGen_mutCount
 rm $intMut_temp
 
 #Isolate only the gene & mutation count and sort
@@ -42,8 +53,8 @@ rm $shGen_mutCount
 
 ##### ACTUAL TABLE VALIDATION #####
 echo "Counting mutation sum in table file (`date`)"
-tabl_mutCount=`mktemp`
-bash columns_sums.sh $TABL_FILE | sort > $tabl_mutCount_sorted
+tabl_mutCount_sorted=`mktemp`
+bash columns_sums.sh $TABL_FILE $TABL_START_ROW $TABL_START_COL | sort > $tabl_mutCount_sorted
 
 
 
