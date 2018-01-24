@@ -5,6 +5,8 @@
 #   all ints are summed.
 #
 # Input   $1 - .csv file to sum
+#	  $2 - first row to start counting from
+#	  $3 - first column to start counting from
 #
 # Output: print-out of the sum of all mutations for each gene
 # ============================================================================
@@ -13,8 +15,8 @@
 TABLE_FILE=$1
 
 #The rows and columns to start summing from
-START_ROW=2
-START_COL=3
+START_ROW=$2
+START_COL=$3
 
 
 #Use awk to count and sum
