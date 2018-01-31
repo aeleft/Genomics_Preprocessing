@@ -5,6 +5,7 @@ Script that converts a filtered output file into rows of genes with columns as i
 Input:  $1 - filtered input file from segregation
         $2 - sample information file
         $3 - affection status as seen in sample informaiton file
+        $4 - the column at which the inidividual zygosity starts
 
 Output: condensed file containing just individuals, genes gender and mutation count
 
@@ -34,8 +35,9 @@ AFFECTION_STATUS = sys.argv[3]
 CONDENSED_OUTPUT_FILE = "merged_file_transposed.csv"
 
 #Subject column variables
-SUBJ_START_COL = 83
+SUBJ_START_COL = int(sys.argv[4])
 STEP_SIZE = 6
+#Subj zygosity: dbGaP_casecontrol=183
 
 
 #Opens and stores information from the sample information file
