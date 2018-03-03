@@ -1,4 +1,5 @@
 # Validation
+<span style="color:red">**The current repository is deprecated due to unknown bugs in the validation pipeline that produces discrepancies in the output mutation count. Use the _simpleValidation_ repository instead**</span>
 
 The scripts here are used to validate that the mutation count is correct.
 
@@ -48,7 +49,3 @@ Finally, we compare the result from the two pipelines to check if we arrived at 
 
 **columns_sums.sh**
 - Iterate over all rows and columns (after the user-specified indeces) to take the sum of each gene
- 
-
-
-
