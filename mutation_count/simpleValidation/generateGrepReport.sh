@@ -37,13 +37,13 @@ do
   #Indicate to user:
   echo "========================================"
   date
-  echo "Grepping from variant file: $g"
+  echo "Gene being extracted from variant file: $g"
 
   #Generate the name for the zygosity file
   zygoFile="$g""_zygosityFile_shGen.csv"
 
   #Grep the gene from the variant file into the zygosity file
-  grep $g $VAR_FILE > $zygoFile
+  python getGeneSubfile.py $VAR_FILE $g $zygoFile
 
   #Look for the mixed list of genes in the zygosity file
   echo "Genes present in $zygoFile :"
