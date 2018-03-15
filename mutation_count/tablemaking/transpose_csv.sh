@@ -10,13 +10,13 @@ IN_FILE=$1
 OUT_FILE=$2
 
 awk -F, '
-{ 
+{
     for (i=1; i<=NF; i++)  {
         a[NR,i] = $i
     }
 }
 NF>p { p = NF }
-END {    
+END {
     for(j=1; j<=p; j++) {
         str=a[1,j]
         for(i=2; i<=NR; i++){
@@ -25,5 +25,3 @@ END {
         print str
     }
 }' $IN_FILE > $OUT_FILE
-
-
