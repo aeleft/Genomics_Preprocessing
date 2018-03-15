@@ -2,6 +2,7 @@
 
 ###############################################################################
 # Wrapper script for the tablemaking processing pipeline from variant files.
+# Note the dos2unix command will not work on a mac, but will on a UNIX server
 #
 # Pipeline initialied on date:
 #
@@ -36,22 +37,38 @@ echo "Number of rows to offset for header: $header_rows"
 rm $header_offset_file
 
 
+## Convert the newline delimiters in case it is in the DOS format ##
+echo "Executing dos2unix delimiter conversion: `date`"
+dos2unix $mutExtracted_file
+
+
 ## Condense the extrated mut-count file such that it has unique genes ##
 echo "Summing mutations for unique genes: `date`"
-#Make a temp file for the transposed table output
-table_transposed=`mktemp`
+#Make a temp file for the pre-transposed table output (but save it)
+table_preTransposed="preTranspose_preColCheck_$OUT_TABLE_FILE"
+touch $table_preTransposed
 #Run the file to condense the mutation count file into only unique genes
-python geneMut_uniqSum.py $mutExtracted_file $table_transposed $header_rows
+python geneMut_uniqSum.py $mutExtracted_file $table_preTransposed $header_rows
 
 #Remove the mutation extraction temp file
 rm $mutExtracted_file
 
 
-## Transpose the transposed table file to generate the final table ##
-echo "Transposing to create finalized table file: `date`"
-bash transpose_csv.sh $table_transposed $OUT_TABLE_FILE
+## Transpose the transposed table file to generate post-transposed table ##
+echo "Transposing to create post-transposed table file: `date`"
+#Make a temp file for the post-transposed table
+table_postTransposed=`mktemp`
+#Tranpose the table
+bash transpose_csv.sh $table_preTransposed $table_postTransposed
 
-#Remove the intermediate table file
-rm $table_transposed
+
+
+## Do a final check on the post-transposed table fro duplicated columns ##
+echo "Final check on duplicated columns: `date`"
+python uniqColGene_check.py $table_postTransposed $OUT_TABLE_FILE $header_rows
+
+
+#Remove the pre-final processed, post-transposed table
+rm $table_postTransposed
 
 echo "Done! On `date`"
