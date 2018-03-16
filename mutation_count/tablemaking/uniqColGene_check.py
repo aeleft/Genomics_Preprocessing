@@ -53,7 +53,7 @@ M_cols = len(header_gene_set) + SUBJ_INFO_COLS
 
 #Open output file
 outFile = open(OUTPUT_FILE,'wb')
-writer = csv.writer(outFile, delimiter=',')
+writer = csv.writer(outFile, delimiter=',', lineterminator='\n')
 
 
 ### Read the first row of input file again to get dict of unique genes ###

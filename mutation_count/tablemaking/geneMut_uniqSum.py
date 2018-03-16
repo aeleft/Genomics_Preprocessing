@@ -33,7 +33,7 @@ HEADER_OFFSET = int(sys.argv[3])
 inFile = open(INPUT_FILE,'rb')
 inFile_reader = csv.reader(inFile, delimiter=',')
 outFile = open(OUTPUT_FILE,'wb')
-outFile_writer = csv.writer(outFile, delimiter=',')
+outFile_writer = csv.writer(outFile, delimiter=',', lineterminator='\n')
 
 
 ### Write the header from the input file to the output file ###

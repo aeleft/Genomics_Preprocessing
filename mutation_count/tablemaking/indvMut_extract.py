@@ -90,7 +90,7 @@ HashMap_Id2Col = {}
 infoFile = open(SUBJ_INFO_FILE,'rb')
 infoFile_reader = csv.reader(infoFile, delimiter=',')
 outFile = open(OUTPUT_FILE,'wb')
-outFile_writer = csv.writer(outFile, delimiter=',')
+outFile_writer = csv.writer(outFile, delimiter=',', lineterminator='\n')
 
 #Save the header (always 1st row) from the subject information file
 infoFile_header = infoFile_reader.next()

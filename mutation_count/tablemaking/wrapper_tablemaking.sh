@@ -18,7 +18,7 @@ OUT_TABLE_FILE=""
 
 ### Dataset-specific variables ###
 #The column index (from idx=0) containing subject ID in the variant file
-SUBJ_ID_COL=82
+SUBJ_ID_COL=182
 #dbGaP_casecontrol:182; dbGaP_trios:82; NDAR:85 ; CONFIRM ON FILE EACH TIME
 
 
@@ -38,8 +38,8 @@ rm $header_offset_file
 
 
 ## Convert the newline delimiters in case it is in the DOS format ##
-echo "Executing dos2unix delimiter conversion: `date`"
-dos2unix $mutExtracted_file
+#echo "Executing dos2unix delimiter conversion: `date`"
+#dos2unix $mutExtracted_file
 
 
 ## Condense the extrated mut-count file such that it has unique genes ##
