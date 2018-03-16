@@ -18,6 +18,7 @@
 
 #Import modules
 import sys, os, csv
+import shutil
 from collections import OrderedDict
 
 
@@ -42,7 +43,8 @@ header_gene_set = set(raw_header_genes)
 if len(raw_header_genes) == len(header_gene_set):
     print "All genes already unique. Updating filename and terminating program."
     inFile.close()
-    os.rename(INPUT_FILE, OUTPUT_FILE)
+    #Remname file
+    shutil.move(INPUT_FILE, OUTPUT_FILE)
     sys.exit()
 
 
