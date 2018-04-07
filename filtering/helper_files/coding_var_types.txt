@@ -1,6 +1,0 @@
-frameshift_deletion
-frameshift_insertion
-frameshift_substitution
-nonsynonymous_SNV
-stopgain
-stoploss

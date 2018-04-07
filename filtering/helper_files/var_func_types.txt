@@ -1,3 +1,0 @@
-exonic
-exonic_splicing
-intronic_splicing
