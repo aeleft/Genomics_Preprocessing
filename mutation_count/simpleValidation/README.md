@@ -10,7 +10,7 @@ The script here help automate a simple validation step to check the validity of 
 
   `bash columns_sums.sh table.csv rowIdx colIdx > column_sum_file.txt`
 
-#### Alternative way of mutation counts for a subset of genes
+#### Re-Generate mutation counts for a subset of genes from variant file
 - As a method of comparison, we will count, using an alternative method, mutation count for a subset of genes which we can compare with the table-generated mutation count to make sure both ways reach the same total mutation counts
 - This is done very simply by using the `grep` shell function. It has been automated in the script `generateGrepReport.sh`, which is used as follows:
   1. Before running the script, the user must set the following variables:
