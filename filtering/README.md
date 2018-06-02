@@ -25,7 +25,8 @@ The scripts here are used to filter tab-delimited genetic variant file(s) (typic
     - coding variant type: filter only for variants with a specific coding type (e.g. "exonic", "intronic_splicing", etc.)
     - Minor allele frequency: the appropriate range of minor allele frequency that should be included
 3. Run the script via executing the script using _Python_ in command line:
-    `python filtering_script_for_corresponding_dataset.py`
+
+  `python filtering_script_for_corresponding_dataset.py`
 
 4. After the script has finished running, it will generate an output file named "**resultsPASS.csv**" which contains all the filtered variants
     - For good practice, we typically rename the filtered result file to be something more specific, and move both the filtering script and the filtered result file  to a separate directory for the next step of analysis.
