@@ -15,6 +15,8 @@
 #
 # Assumptions:
 #   - First row and only the first row is the header row
+#
+# Author: Anthony Chen
 ###############################################################################
 
 import os, sys, csv
